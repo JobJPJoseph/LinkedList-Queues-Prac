@@ -4,12 +4,16 @@ class SinglyLinkedNode {
     constructor(val) {
         this.value = val;
         this.next = null;
+        // no previous
     }
 }
 
 class SinglyLinkedList {
     constructor(head = null) {
         this.head = head;
+        // no tail
+        // no length
+        this.length = 0;
     }
 
     addToTail(val) {
@@ -17,6 +21,7 @@ class SinglyLinkedList {
 
         if (!this.head) {
             this.head = newNode;
+            this.length++;
             return this.head;
         }
 
@@ -26,12 +31,31 @@ class SinglyLinkedList {
         }
 
         curr.next = newNode;
+        this.length++;
         return this.head;
     }
 
     listLength() {
         // Returns the length of the list
+        // We don't have length
+
+        // if (!this.head) return 0;
+
+        // let current = this.head;
+        // let count = 0;
+
+        // while(current.next) {
+        //     current = current.next;
+        //     count++;
+        // }
+
+        // return count;
+
         // Implement in O(n) and in O(1) time complexity
+        // using length
+
+        return this.length;
+
     }
 
     sumOfNodes() {
