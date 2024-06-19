@@ -91,12 +91,22 @@ class SinglyLinkedList {
 
         return sums / this.length;
         // Write your hypothesis on the time complexity of this method here
+        // O(n)
     }
 
     findNthNode(n) {
         // Returns the node at the nth index from the head
 
+        let current = this.head;
+
+        while(n) {
+            current = current.next;
+            n--;
+        }
+
+        return current;
         // Write your hypothesis on the time complexity of this method here
+        //O(n)
     }
 
     findMid() {
@@ -104,12 +114,33 @@ class SinglyLinkedList {
         // Implement this as a singly linked list then as a doubly linked list
             // How do the implementation for singly and doubly vary if at all?
 
+        // single linked list
+            // 3 => 1.5 => 2
+            // 6 => 3 => 3
+            // We can probably do Math.round(this.length / 2);
+
+        let mid = Math.round(this.length / 2);
+
+        return this.findNthNode(mid - 1);
         // Write your hypothesis on the time complexity of this method here
+        // O(n);
     }
 
     reverse() {
         // Returns a new reversed version of the linked list
+        // We don't have to iterate thru it twice to reverse it.
 
+        const nodes = new SinglyLinkedList();
+
+        while(nodes.length < this.length) {
+            // get the different of length
+            // (0 - 6) (1 - 5) (2 - 6)
+            // We need to call findNthNode(index)
+
+            nodes.addToTail( (this.findNthNode((this.length - 1) - nodes.length)).value );
+        }
+
+        return nodes;
         // Write your hypothesis on the time complexity of this method here
     }
 
