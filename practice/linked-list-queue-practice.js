@@ -61,12 +61,35 @@ class SinglyLinkedList {
     sumOfNodes() {
         // Returns the sum of the values of all the nodes
 
+        // We need to iterate and collect the values from each node.
+
+        let sums = 0;
+
+        let current = this.head;
+
+        while(current) {
+            sums += current.value;
+            current = current.next;
+        }
+
+        return sums;
         // Write your hypothesis on the time complexity of this method here
+        // O(n);
     }
 
     averageValue() {
         // Returns the average value of all the nodes
 
+        let sums = 0;
+
+        let current = this.head;
+
+        while(current) {
+            sums += current.value;
+            current = current.next;
+        }
+
+        return sums / this.length;
         // Write your hypothesis on the time complexity of this method here
     }
 
