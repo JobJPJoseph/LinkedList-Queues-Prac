@@ -106,7 +106,7 @@ class SinglyLinkedList {
 
         return current;
         // Write your hypothesis on the time complexity of this method here
-        //O(n)
+        // O(n)
     }
 
     findMid() {
@@ -142,10 +142,31 @@ class SinglyLinkedList {
 
         return nodes;
         // Write your hypothesis on the time complexity of this method here
+        // O(n^3)
     }
 
     reverseInPlace() {
         // Reverses the linked list in-place
+        //
+
+        // We need to make sure we keep track of prev node. Prev by default is null
+        let prev = null;
+        let next = null;
+        let current = this.head;
+
+        while (current) {
+            next = current.next;
+
+            current.next = prev;
+
+            prev = current;
+
+            current = next;
+
+        }
+
+        this.head = prev;
+
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -163,6 +184,7 @@ class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
+        this.length = 0;
     }
 
     addToTail(val) {
@@ -171,12 +193,14 @@ class DoublyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
+            this.length++;
             return this.head;
         }
 
         this.tail.next = newNode;
         newNode.prev = this.tail;
         this.tail = newNode;
+        this.length++;
 
         return this.head;
     }
