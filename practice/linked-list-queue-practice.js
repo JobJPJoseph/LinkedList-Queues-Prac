@@ -162,13 +162,30 @@ class SinglyLinkedList {
             prev = current;
 
             current = next;
-
         }
 
         this.head = prev;
 
+        // Explain:
+            // Since we are only have next property we need to re-create the Doubly class
+            // We are going to have three pointers called prev, current, next
+                // next = null, prev = null, current = this.head;
+            // This will all be done under a while loop.
+                // We will test if current is valid.
+                    // if true:
+                        // We need to grab the current next which is 2 and have next point ot it.
+                            // Note: On the first iteration current and this.head are the same but after are not
+                        // Next we need to disconnect the current node .next 1 from 2 and set it to null;
+                            // Note: next is still pointing to 2 so the value is not lost because it os a piece of a linked list.
+                        // Next we need to re-assign prev which is null to point to current which is 1 or this.head
+                            // Note: We don't lose the original null bc current.next now is null
+                        // Next we need to move the current pointer which 1 to point to next which is 2. This makes current now 2
+
+                    // if false:
+                        // Means that We reached the last node. All we need to do is move the this.head.prev.
 
         // Write your hypothesis on the time complexity of this method here
+        //O(n)
     }
 }
 
@@ -210,7 +227,19 @@ class DoublyLinkedList {
         // Implement this as a singly linked list then as a doubly linked list
             // How do the implementation for singly and doubly vary if at all?
 
+        let mid = Math.round(this.length / 2) - 1;
+
+        let current = this.head;
+
+        while(mid) {
+            current = current.next;
+            mid--;
+        }
+
+        return current;
         // Write your hypothesis on the time complexity of this method here
+        // O(n)
+
     }
 
     reverse() {
