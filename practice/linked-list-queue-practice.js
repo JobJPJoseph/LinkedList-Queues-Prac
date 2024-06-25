@@ -245,13 +245,41 @@ class DoublyLinkedList {
     reverse() {
         // Returns a new reversed version of the linked list
 
+        const nodes = new DoublyLinkedList();
+        let current = this.tail;
+
+        while(nodes.length < this.length) {
+            nodes.addToTail(current.value);
+
+            current = current.prev;
+        }
+
+        return nodes;
         // Write your hypothesis on the time complexity of this method here
+        // O(n);
     }
 
     reverseInPlace() {
         // Reverses the linked list in-place
 
+        let current = this.tail;
+
+        while(current) {
+            let temp = current.next;
+            let temp2 = current.prev;
+
+            current.next = temp2;
+            current.prev = temp;
+
+            current =  temp2;
+        }
+
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
         // Write your hypothesis on the time complexity of this method here
+        // O(n)
     }
 }
 
